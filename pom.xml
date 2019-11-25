@@ -12,6 +12,7 @@
         <module>online-store-monolithic</module>
         <module>hello-world</module>
         <module>item-service</module>
+        <module>order-service</module>
     </modules>
 
 </project>
