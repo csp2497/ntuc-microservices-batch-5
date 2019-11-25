@@ -13,6 +13,7 @@
         <module>hello-world</module>
         <module>item-service</module>
         <module>order-service</module>
+        <module>eureka-service</module>
     </modules>
 
 </project>

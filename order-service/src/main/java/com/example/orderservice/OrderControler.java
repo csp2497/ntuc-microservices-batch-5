@@ -22,7 +22,8 @@ public class OrderControler {
 
     @PostMapping("/orders")
     public String createOrder(){
-        restTemplate.getForObject("http://localhost:8081/items", List.class);
+        List list = restTemplate.getForObject("http://ITEM-SERVICE/items", List.class);
+        System.out.println(list);
         return "order-1";
     }
 }
