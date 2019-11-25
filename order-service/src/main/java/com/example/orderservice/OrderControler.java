@@ -21,9 +21,9 @@ public class OrderControler {
     }
 
     @PostMapping("/orders")
-    public String createOrder(){
+    public List createOrder(){
         List list = restTemplate.getForObject("http://ITEM-SERVICE/items", List.class);
         System.out.println(list);
-        return "order-1";
+        return list;
     }
 }
