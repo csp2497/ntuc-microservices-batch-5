@@ -4,3 +4,16 @@ server:
 spring:
   application:
     name: ORDER-SERVICE
+
+
+logging: #Make sure to change the path /Users/mukeshkumar/development/logs as per your system.
+  file: /Users/mukeshkumar/development/logs/order-service.log
+
+management:
+  endpoint:
+    metrics:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"

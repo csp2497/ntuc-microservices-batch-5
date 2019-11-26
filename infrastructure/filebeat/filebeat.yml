@@ -1,0 +1,8 @@
+filebeat.inputs:
+- type: log
+  paths:
+  - /var/apps/*.log
+
+output.logstash:
+  hosts: ["logstash"]
+ssl.verification_mode: none

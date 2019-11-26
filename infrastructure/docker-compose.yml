@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  elasticsearch:
+    image: elasticsearch:7.3.0
+    ports:
+    - "9200:9200"
+    environment:
+    - discovery.type=single-node
+    - "ES_JAVA_OPTS=-Xms500m -Xmx500m"
+  kibana:
+    image: kibana:7.3.0
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+    ports:
+    - "5601:5601"
+  filebeat:
+    build:
+      context: filebeat
+    user: root
+    volumes:
+      #Make sure to change the path /Users/mukeshkumar/development/logs as per your system.
+    - /Users/mukeshkumar/development/logs:/var/apps
+  logstash:
+    build:
+      context: logstash
+    ports:
+    - "5044:5044"
