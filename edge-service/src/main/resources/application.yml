@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: EDGE-SERVICE
+
+zuul:
+  routes:
+    ITEM-SERVICE:
+      path: /items/**
+      serviceId: ITEM-SERVICE
+      stripPrefix: false
