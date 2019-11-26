@@ -11,7 +11,13 @@ zuul:
       path: /items/**
       serviceId: ITEM-SERVICE
       stripPrefix: false
-
+  ratelimit:
+    enabled: true
+    repository: JPA
+    policy-list:
+      ITEM-SERVICE:
+      - limit: 10
+        refresh-interval: 30
 
 management:
   endpoint:
