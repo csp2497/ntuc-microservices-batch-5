@@ -1,7 +1,10 @@
 package com.example.orderservice;
 
+import com.netflix.discovery.converters.Auto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.stream.messaging.Source;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +20,12 @@ public class OrderControler {
     @Autowired
     public RestTemplate restTemplate;
 
+
+    @Autowired
+    private Source source;
+
+    private int orderNumber = 100;
+
     @GetMapping("/orders")
     public String getOrder(){
         try {
@@ -31,6 +40,7 @@ public class OrderControler {
     public List createOrder(){
         List list = restTemplate.getForObject("http://ITEM-SERVICE/items", List.class);
         System.out.println(list);
+        source.output().send(MessageBuilder.withPayload( "Order-" + ++orderNumber).build());
         return list;
     }
 }

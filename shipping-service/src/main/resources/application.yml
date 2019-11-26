@@ -1,9 +1,6 @@
-server:
-  port: 8082
-
 spring:
   application:
-    name: ORDER-SERVICE
+    name: SHIPMENT-SERVICE
   cloud:
     stream:
       kafka:
@@ -15,12 +12,10 @@ spring:
               mechanism: SCRAM-SHA-256
               jaas.config: org.apache.kafka.common.security.scram.ScramLoginModule required username="iwiyz2ep" password="AUnRE42ufiOYRWCHWQ6H3pcWSng-3YZQ";
       bindings:
-        output:
+        order-input-stream:
           destination: iwiyz2ep-order
-
-
-logging: #Make sure to change the path /Users/mukeshkumar/development/logs as per your system.
-  file: /Users/mukeshkumar/development/logs/order-service.log
+server:
+  port: 8085
 
 management:
   endpoint:
@@ -30,3 +25,6 @@ management:
     web:
       exposure:
         include: "*"
+
+logging: #Make sure to change the path /Users/mukeshkumar/development/logs as per your system.
+  file: /Users/mukeshkumar/development/logs/shipment-service.log
